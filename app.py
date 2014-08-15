@@ -14,8 +14,3 @@ tfl_data = cleandata.CleanData()
 to_clean = tfl_data.clea_array(jsondata)
 
 print tfl_data.set_json(to_clean)
-
-
-#
-#cleaned_list = clea_array(tflrawdata)
-#print json_list(cleaned_list)
