@@ -19,11 +19,24 @@ class CleanData(object):
             line = re.sub(r'\]', "", line)
             line = re.sub(r'"', "", line)
             lst.append(line)
+        lst.pop(0)
         return lst
+
+    def set_list(self, cleaned_data):
+        clean_lst = []
+        for pn in cleaned_data:
+            line = pn.split(',')
+            date_and_time = time.gmtime(int(line[4])/1000)
+            #dt = time.strftime('%d-%m-%Y', date_and_time)
+            tm = time.strftime("%H:%M", date_and_time)
+            line[4] = tm
+            #line.insert(5, tm)
+            clean_lst.append(line)
+
+        return clean_lst
 
     def set_json(self, cleaned_data):
         clean_lst = []
-        cleaned_data.pop(0)
         for pn in cleaned_data:
             line = pn.split(',')
             date_and_time = time.gmtime(int(line[4])/1000)
